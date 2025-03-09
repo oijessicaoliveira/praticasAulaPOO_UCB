@@ -3,7 +3,7 @@ public class Principal {
         // System.out.println("Olá, humano!");
 
         Livro meuLivro = new Livro();
-        meuLivro.nome = "Harry Potter e a Pedra Filosofal";
+        meuLivro.titulo = "Harry Potter e a Pedra Filosofal";
         meuLivro.autor = "J. K. Rowlling";
         meuLivro.editora = "Rocco";
         meuLivro.numeroDePaginas = 208;

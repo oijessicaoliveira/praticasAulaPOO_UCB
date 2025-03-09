@@ -1,6 +1,6 @@
 public class Livro {
     
-    String nome;
+    String titulo;
     String autor;
     String editora;
     int numeroDePaginas;
@@ -9,7 +9,7 @@ public class Livro {
     int totalDeAvaliacoes;
 
     void exibeFichaLiteraria(){
-        System.out.println("Nome do livro: " + nome);
+        System.out.println("Nome do livro: " + titulo);
         System.out.println("Nome do autor (a): " + autor);
         System.out.println("Editora: " + editora);
         System.out.println("Número de páginas: " + numeroDePaginas);
