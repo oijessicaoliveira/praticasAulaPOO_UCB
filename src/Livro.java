@@ -4,7 +4,7 @@ public class Livro {
     String autor;
     String editora;
     int numeroDePaginas;
-    boolean lido;
+    boolean lerNovamente;
     double avaliacao;
     int totalDeAvaliacoes;
 
@@ -13,7 +13,7 @@ public class Livro {
         System.out.println("Nome do autor (a): " + autor);
         System.out.println("Editora: " + editora);
         System.out.println("Número de páginas: " + numeroDePaginas);
-        System.out.println("Lido? " + lido);
+        System.out.println("Vou ler de novo? " + lerNovamente);
         System.out.println("Avaliação: " + avaliacao);
     }
 
