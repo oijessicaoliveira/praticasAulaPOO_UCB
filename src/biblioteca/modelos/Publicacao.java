@@ -1,5 +1,4 @@
 package biblioteca.modelos;
-
 // Criando a classe "Publicacao" com seus devidos atributos
 public class Publicacao {
     
@@ -8,11 +7,33 @@ public class Publicacao {
     private String editora;
     private String tipo;
     private int numeroDePaginas;
-    //private boolean disponivel;
     private double somaAvaliacoes;
     private int totalDeAvaliacoes;
+    
+    public String getTitulo() {
+        return titulo;
+    }
 
-//Liberando os atributos para serem alterados
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public int getNumeroDePaginas() {
+        return numeroDePaginas;
+    }
+
+    public int getTotalDeAvaliacoes() {
+        return totalDeAvaliacoes;
+    }
+
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
@@ -33,37 +54,27 @@ public class Publicacao {
         this.numeroDePaginas = numeroDePaginas;
     }
 
-    /*public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
-    }*/
-
-// Criando o médoto para exibir a ficha literária da publicação
-    public void exibeFichaLiteraria(){
-        System.out.println("Nome do livro: " + titulo);
-        System.out.println("Nome do autor (a): " + autor);
-        System.out.println("Editora: " + editora);
-        System.out.println("Tipo de publicação: " + tipo);
-        System.out.println("Número de páginas: " + numeroDePaginas);
-    }
-
 // Criando o método para trabalhar com as notas dadas para as publicações
     public void avalia(double nota){
         somaAvaliacoes += nota;
         totalDeAvaliacoes++;
     }
 
-    public double retornaMedia(){
+    public double retornaMedia() {
         return somaAvaliacoes / totalDeAvaliacoes;
     }
 
-//Criando o método para trabalhar a parte do empréstimo da publicação
-    /*public void emprestar() {
-        if (disponivel) {
-            disponivel = false;
-            System.out.println("Publicação emprestada.");
-        } else {
-            System.out.println("Publicação disponível.");
-        }
-    }*/
+    public void exibeMedia() {
+        System.out.println("Avaliações: " + retornaMedia());
+    }
 
+    // Criando o médoto para exibir a ficha literária da publicação
+    public void exibeFichaLiteraria() {
+        System.out.println("Título: " + titulo);
+        System.out.println("Nome do autor (a): " + autor);
+        System.out.println("Editora: " + editora);
+        System.out.println("Tipo de publicação: " + tipo);
+        System.out.println("Número de páginas: " + numeroDePaginas);
+
+    }
 }
