@@ -1,12 +1,12 @@
 package biblioteca.modelos;
 // Criando a classe "Publicacao" com seus devidos atributos
 public class Publicacao {
-    
-    private String titulo;
-    private String autor;
-    private String editora;
-    private String tipo;
-    private int numeroDePaginas;
+    // Quando um atributo é protected, as subclasses podem acessar diretamente esse atributo, tornando o código mais simples em alguns contextos.
+    protected String titulo;
+    protected String autor;
+    protected String editora;
+    protected String tipo;
+    protected int numeroDePaginas;
     private double somaAvaliacoes;
     private int totalDeAvaliacoes;
     
@@ -70,10 +70,10 @@ public class Publicacao {
 
     // Criando o médoto para exibir a ficha literária da publicação
     public void exibeFichaLiteraria() {
+        System.out.println("\n--- Ficha Literária ---");
         System.out.println("Título: " + titulo);
         System.out.println("Nome do autor (a): " + autor);
         System.out.println("Editora: " + editora);
-        System.out.println("Tipo de publicação: " + tipo);
         System.out.println("Número de páginas: " + numeroDePaginas);
 
     }

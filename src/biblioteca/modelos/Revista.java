@@ -30,4 +30,14 @@ public class Revista extends Publicacao {
     public void setNumeroDeArtigos(int numeroDeArtigos) {
         this.numeroDeArtigos = numeroDeArtigos;
     }
+
+    @Override
+    public void exibeFichaLiteraria() {
+        super.exibeFichaLiteraria(); // Chama o método da superclasse para exibir atributos comuns
+        System.out.println("Assunto: " + assunto);
+        System.out.println("Edição: " + edicao);
+        System.out.println("ISSN: " + issn);
+        System.out.println("Número de artigos: " + numeroDeArtigos);
+        System.out.println("Tipo de publicação: Revista");
+    }
 }
