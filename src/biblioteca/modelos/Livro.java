@@ -1,11 +1,12 @@
 package biblioteca.modelos;
-
 public class Livro extends Publicacao {
+    // Atributos específicos de Livro
     private int volume;
     private String isbn;
     private String genero;
     private int numeroDeCapitulos;
-    
+
+    // GETTERS
     public int getVolume() {
         return volume;
     }
@@ -18,6 +19,8 @@ public class Livro extends Publicacao {
     public int getNumeroDeCapitulos() {
         return numeroDeCapitulos;
     }
+
+    // SETTERS
     public void setVolume(int volume) {
         this.volume = volume;
     }
@@ -31,9 +34,17 @@ public class Livro extends Publicacao {
         this.numeroDeCapitulos = numeroDeCapitulos;
     }
 
+    /*
+     * Exemplo de sobrescrita (Override):
+     * Sobrescrevemos o método "exibeFichaLiteraria()" para incluir
+     * informações específicas de um "Livro".
+     */
     @Override
     public void exibeFichaLiteraria() {
-        super.exibeFichaLiteraria(); // Chama o método da superclasse para exibir atributos comuns
+        // Chamamos primeiro o método da superclasse para mostrar atributos comuns
+        super.exibeFichaLiteraria();
+
+        // Depois exibimos atributos específicos de "Livro"
         System.out.println("Gênero: " + genero);
         System.out.println("Volume: " + volume);
         System.out.println("ISBN: " + isbn);
