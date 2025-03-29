@@ -1,5 +1,5 @@
 package biblioteca.modelos;
-public class Livro extends Publicacao {
+public class Livro extends Publicacao implements Digitalizavel {
     // Atributos específicos de Livro
     private int volume;
     private String isbn;
@@ -50,5 +50,14 @@ public class Livro extends Publicacao {
         System.out.println("ISBN: " + isbn);
         System.out.println("Número de capítulos: " + numeroDeCapitulos);
         System.out.println("Tipo de publicação: Livro");
+    }
+
+    /*
+     * Método da interface Digitalizavel que somos obrigados a implementar,
+     * já que "Livro" declarou "implements Digitalizavel".
+     */
+    @Override
+    public void geraVersaoDigital() {
+        System.out.println("Há uma versão digital do livro disponível para você!");
     }
 }

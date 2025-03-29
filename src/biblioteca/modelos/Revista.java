@@ -1,5 +1,5 @@
 package biblioteca.modelos;
-public class Revista extends Publicacao {
+public class Revista extends Publicacao implements Digitalizavel {
     // Atributos específicos de Revista
     private String edicao;
     private String assunto;
@@ -49,5 +49,10 @@ public class Revista extends Publicacao {
         System.out.println("ISSN: " + issn);
         System.out.println("Número de artigos: " + numeroDeArtigos);
         System.out.println("Tipo de publicação: Revista");
+    }
+
+    @Override
+    public void geraVersaoDigital() {
+        System.out.println("Gerando versão digital da revista: " + getTitulo());
     }
 }

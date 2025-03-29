@@ -1,6 +1,5 @@
-import biblioteca.modelos.Livro;
-import biblioteca.modelos.Publicacao;
-import biblioteca.modelos.Revista;
+import biblioteca.modelos.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +20,7 @@ public class Principal {
         meuLivro.setNumeroDeCapitulos(17);
         meuLivro.setIsbn("9780545069670");
         meuLivro.setVolume(1);
+        meuLivro.geraVersaoDigital();
 
         // Avaliando usando sobrecarga (overload):
         meuLivro.avalia(9); // chamará avalia(int nota)
@@ -79,7 +79,36 @@ public class Principal {
 
             // Exibe média de avaliações
             System.out.println("Média de Avaliações: " + pub.retornaMedia());
+            if (pub instanceof Digitalizavel) {
+                ((Digitalizavel) pub).geraVersaoDigital();
+            }
             System.out.println("-----------------------------------------");
         }
+
+        /*
+         * ============================
+         * CRIAÇÃO DE OBJETO: E-BOOK
+         * ============================
+         */
+        Ebook meuEbook = new Ebook();
+        meuEbook.setTitulo("Clean Code: A Handbook of Agile Software Craftsmanship");
+        meuEbook.setAutor("Robert C. Martin");
+        meuEbook.setEditora("Prentice Hall");
+        meuEbook.setNumeroDePaginas(464); // referência, como se fosse a edição impressa
+        meuEbook.setTamanhoEmMB(45);
+        meuEbook.setFormato("EPUB");
+
+        // Avaliações via métodos herdados de Publicacao
+        meuEbook.avalia(10);
+        meuEbook.avalia(9.5);
+
+        // Exibe a ficha literária (que vem da cadeia PublicacaoDigital -> Publicacao)
+        meuEbook.exibeFichaLiteraria();
+
+        // Chama o método abstrato implementado em Ebook
+        meuEbook.baixar();
+
+        // Mostra a média de avaliações (herdado de Publicacao)
+        System.out.println("Avaliação média: " + meuEbook.retornaMedia());
     }
 }
