@@ -35,8 +35,8 @@ public class Revista extends Publicacao implements Digitalizavel {
     }
 
     /*
-     * Exemplo de sobrescrita (Override):
-     * Sobrescrevemos o método "exibeFichaLiteraria()" para revista.
+     Exemplo de sobrescrita (Override):
+     Sobrescrevemos o método "exibeFichaLiteraria()" para revista.
      */
     @Override
     public void exibeFichaLiteraria() {

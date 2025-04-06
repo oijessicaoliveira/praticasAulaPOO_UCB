@@ -35,9 +35,9 @@ public class Livro extends Publicacao implements Digitalizavel {
     }
 
     /*
-     * Exemplo de sobrescrita (Override):
-     * Sobrescrevemos o método "exibeFichaLiteraria()" para incluir
-     * informações específicas de um "Livro".
+     Exemplo de sobrescrita (Override):
+     Sobrescrevemos o método "exibeFichaLiteraria()" para incluir
+     informações específicas de um "Livro".
      */
     @Override
     public void exibeFichaLiteraria() {
@@ -53,8 +53,8 @@ public class Livro extends Publicacao implements Digitalizavel {
     }
 
     /*
-     * Método da interface Digitalizavel que somos obrigados a implementar,
-     * já que "Livro" declarou "implements Digitalizavel".
+     Método da interface Digitalizavel que somos obrigados a implementar,
+     já que "Livro" declarou "implements Digitalizavel".
      */
     @Override
     public void geraVersaoDigital() {

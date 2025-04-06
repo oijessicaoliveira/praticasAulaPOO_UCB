@@ -6,28 +6,46 @@ import java.util.List;
 public class Principal {
     public static void main(String[] args) throws Exception {
         /*
-         * ============================
-         * CRIAÇÃO DE OBJETO: LIVRO
-         * ============================
+         ============================
+         CRIAÇÃO DE OBJETO: LIVRO
+         ============================
          */
-        Livro meuLivro = new Livro();
-        meuLivro.setTitulo("Harry Potter e a Pedra Filosofal");
-        meuLivro.setAutor("J. K. Rowlling");
-        meuLivro.setEditora("Rocco");
-        meuLivro.setGenero("Fantasia");
-        // meuLivro.setTipo("Livro"); // Podemos setar, mas não é obrigatório
-        meuLivro.setNumeroDePaginas(208);
-        meuLivro.setNumeroDeCapitulos(17);
-        meuLivro.setIsbn("9780545069670");
-        meuLivro.setVolume(1);
-        meuLivro.geraVersaoDigital();
+
+        /* Aqui, try engloba o processo de criação do objeto.
+        Se uma exceção for lançada (por exemplo, com número de páginas negativo), o catch a tratará.
+        O finally garante que o sistema finalize algo, mesmo em caso de erro. */
+
+        Livro meuLivro = null;
+        try {
+            meuLivro = new Livro();
+            meuLivro.setTitulo("Harry Potter e a Pedra Filosofal");
+            meuLivro.setAutor("J. K. Rowlling");
+            meuLivro.setEditora("Rocco");
+            meuLivro.setGenero("Fantasia");
+            meuLivro.setNumeroDePaginas(208); // valor válido
+            meuLivro.setNumeroDeCapitulos(17);
+            meuLivro.setIsbn("9780545069670");
+            meuLivro.setVolume(1);
+            meuLivro.geraVersaoDigital();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro ao criar o livro: " + e.getMessage());
+        } finally {
+            System.out.println("Processo de criação de livro finalizado.");
+        }
 
         // Avaliando usando sobrecarga (overload):
         meuLivro.avalia(9); // chamará avalia(int nota)
         meuLivro.avalia(10.0); // chamará avalia(double nota)
         meuLivro.avalia(8.5); // idem avalia(double nota)
 
-        double[] notasLivro = { 9.2, 8.8, 10 };
+        // Avaliando usando try-catch
+        try {
+            meuLivro.avaliaComValidacao(12); // nota inválida
+        } catch (Exception e) {
+            System.out.println("Erro ao avaliar: " + e.getMessage());
+        }
+
+        double[] notasLivro = {9.2, 8.8, 10};
         meuLivro.avalia(notasLivro); // chamará avalia(double[])
 
         // Exibe a ficha literária (override) e a média de avaliações
@@ -35,9 +53,9 @@ public class Principal {
         System.out.println("Avaliação: " + meuLivro.retornaMedia());
 
         /*
-         * ==============================
-         * CRIAÇÃO DE OBJETO: REVISTA
-         * ==============================
+         ==============================
+         CRIAÇÃO DE OBJETO: REVISTA
+         ==============================
          */
         Revista minhaRevista = new Revista();
         minhaRevista.setTitulo("Superinteressante");
