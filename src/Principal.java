@@ -1,6 +1,8 @@
 import biblioteca.modelos.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class Principal {
@@ -83,7 +85,7 @@ public class Principal {
          * Demonstrando que podemos usar uma lista de "Publicacao"
          * e colocar objetos "Livro" e "Revista" juntos.
          */
-        System.out.println("\n=== DEMONSTRANDO POLIMORFISMO ===");
+        /*System.out.println("\n=== DEMONSTRANDO POLIMORFISMO ===");
 
         List<Publicacao> listaPublicacoes = new ArrayList<>();
         listaPublicacoes.add(meuLivro);      // Um Livro, mas a referência é do tipo Publicacao
@@ -101,7 +103,7 @@ public class Principal {
                 ((Digitalizavel) pub).geraVersaoDigital();
             }
             System.out.println("-----------------------------------------");
-        }
+        }*/
 
         /*
          * ============================
@@ -128,5 +130,57 @@ public class Principal {
 
         // Mostra a média de avaliações (herdado de Publicacao)
         System.out.println("Avaliação média: " + meuEbook.retornaMedia());
+
+        // =========================================================
+        // 1) ARMAZENANDO PUBLICAÇÕES EM UMA LISTA (ArrayList)
+        // =========================================================
+        List<Publicacao> listaPublicacoes = new ArrayList<>();
+        listaPublicacoes.add(meuLivro);
+        listaPublicacoes.add(minhaRevista);
+        listaPublicacoes.add(meuEbook);
+
+        System.out.println("\n=== LISTA DE PUBLICAÇÕES ===");
+        for (Publicacao pub : listaPublicacoes) {
+            pub.exibeFichaLiteraria();
+            System.out.println("Média de Avaliações: " + pub.retornaMedia());
+
+            if (pub instanceof Digitalizavel) {
+                ((Digitalizavel) pub).geraVersaoDigital();
+            }
+            System.out.println("----------------------------------");
+        }
+
+        // =========================================================
+        // 2) BUSCA DE PUBLICAÇÃO POR CÓDIGO (HashMap)
+        // =========================================================
+        HashMap<Integer, Publicacao> mapaPublicacoes = new HashMap<>();
+        mapaPublicacoes.put(101, meuLivro);
+        mapaPublicacoes.put(102, minhaRevista);
+        mapaPublicacoes.put(103, meuEbook);
+
+        int codigo = 102; // código de exemplo para busca
+
+        System.out.println("\n=== BUSCA POR CÓDIGO ===");
+        Publicacao encontrada = mapaPublicacoes.get(codigo);
+        if (encontrada != null) {
+            System.out.println("Publicação encontrada:");
+            encontrada.exibeFichaLiteraria();
+        } else {
+            System.out.println("Nenhuma publicação encontrada com esse código.");
+        }
+
+        // =========================================================
+        // 3) CONJUNTO DE AUTORES ÚNICOS (HashSet)
+        // =========================================================
+        HashSet<String> autoresUnicos = new HashSet<>();
+
+        for (Publicacao pub : listaPublicacoes) {
+            autoresUnicos.add(pub.getAutor());
+        }
+
+        System.out.println("\n=== AUTORES CADASTRADOS (SEM REPETIÇÃO) ===");
+        for (String autor : autoresUnicos) {
+            System.out.println(autor);
+        }
     }
 }
