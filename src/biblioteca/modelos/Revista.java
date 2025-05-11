@@ -1,58 +1,60 @@
 package biblioteca.modelos;
+import biblioteca.interfaces.Digitalizavel;
+
 public class Revista extends Publicacao implements Digitalizavel {
-    // Atributos específicos de Revista
     private String edicao;
     private String assunto;
     private String issn;
     private int numeroDeArtigos;
 
-    // GETTERS
     public String getEdicao() {
         return edicao;
     }
+
+    public void setEdicao(String edicao) {
+        this.edicao = edicao;
+    }
+
     public String getAssunto() {
         return assunto;
     }
+
+    public void setAssunto(String assunto) {
+        this.assunto = assunto;
+    }
+
     public String getIssn() {
         return issn;
     }
+
+    public void setIssn(String issn) {
+        this.issn = issn;
+    }
+
     public int getNumeroDeArtigos() {
         return numeroDeArtigos;
     }
 
-    // SETTERS
-    public void setEdicao(String edicao) {
-        this.edicao = edicao;
-    }
-    public void setAssunto(String assunto) {
-        this.assunto = assunto;
-    }
-    public void setIssn(String issn) {
-        this.issn = issn;
-    }
     public void setNumeroDeArtigos(int numeroDeArtigos) {
         this.numeroDeArtigos = numeroDeArtigos;
     }
 
-    /*
-     Exemplo de sobrescrita (Override):
-     Sobrescrevemos o método "exibeFichaLiteraria()" para revista.
-     */
     @Override
-    public void exibeFichaLiteraria() {
-        // Mostra atributos genéricos da superclasse
-        super.exibeFichaLiteraria();
-
-        // Mostra atributos específicos de "Revista"
+    protected void exibeFichaEspecifica() {
+        System.out.println("Tipo: Revista");
         System.out.println("Assunto: " + assunto);
         System.out.println("Edição: " + edicao);
         System.out.println("ISSN: " + issn);
         System.out.println("Número de artigos: " + numeroDeArtigos);
-        System.out.println("Tipo de publicação: Revista");
+    }
+
+    @Override
+    public String getTipo() {
+        return "Revista";
     }
 
     @Override
     public void geraVersaoDigital() {
-        System.out.println("Gerando versão digital da revista: " + getTitulo());
+        System.out.println("Versão digital da revista gerada com sucesso.");
     }
 }

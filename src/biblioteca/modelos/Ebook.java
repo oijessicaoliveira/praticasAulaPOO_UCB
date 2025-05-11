@@ -1,32 +1,29 @@
 package biblioteca.modelos;
 
 public class Ebook extends PublicacaoDigital {
-
-    private String formato; // e.g. "PDF", "EPUB", "MOBI"...
+    private String formato;
 
     public String getFormato() {
         return formato;
     }
+
     public void setFormato(String formato) {
         this.formato = formato;
     }
 
-    // Como PublicacaoDigital tem um método abstrato "baixar()",
-    // somos OBRIGADOS a implementar aqui:
+    @Override
+    protected void exibeFichaEspecifica() {
+        super.exibeFichaEspecifica();
+        System.out.println("Formato: " + formato);
+    }
+
+    @Override
+    public String getTipo() {
+        return "Ebook";
+    }
+
     @Override
     public void baixar() {
-        System.out.println("Baixando e-book " + getTitulo() + " em formato " + this.formato);
+        System.out.println("Baixando e-book: " + getTitulo() + " no formato " + formato);
     }
-
-    // Podemos também sobrescrever exibeFichaLiteraria se quisermos
-    // algo ainda mais específico que a implementação de PublicacaoDigital.
-    // Se não sobrescrevermos, fica valendo a de PublicacaoDigital.
-
-    /*
-    @Override
-    public void exibeFichaLiteraria() {
-        super.exibeFichaLiteraria();
-        System.out.println("Formato do ebook: " + this.formato);
-    }
-    */
 }
