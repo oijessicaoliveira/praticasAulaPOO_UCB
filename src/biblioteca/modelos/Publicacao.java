@@ -1,18 +1,30 @@
 package biblioteca.modelos;
 
 public abstract class Publicacao {
+    private Long id;
     private String titulo;
     private String autor;
     private String editora;
-    private int numeroDePaginas;
+    private int numeroDePaginas; // Primitivo int será 0 por padrão se não setado
 
     private Avaliacao avaliacao = new Avaliacao();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitulo() {
         return titulo;
     }
 
     public void setTitulo(String titulo) {
+        if (titulo == null || titulo.trim().isEmpty()) {
+            throw new IllegalArgumentException("Título não pode ser vazio.");
+        }
         this.titulo = titulo;
     }
 
@@ -70,16 +82,17 @@ public abstract class Publicacao {
 
     public void exibeFichaCompleta() {
         exibeFichaBasica();
-        System.out.println("Tipo: " + getTipo()); // Adicionado
+        System.out.println("Tipo: " + getTipo());
         exibeFichaEspecifica();
     }
 
     private void exibeFichaBasica() {
         System.out.println("\n--- Ficha da Publicação ---");
+        if (this.id != null) System.out.println("ID: " + this.id);
         System.out.println("Título: " + titulo);
-        System.out.println("Autor: " + autor);
-        System.out.println("Editora: " + editora);
-        System.out.println("Número de páginas: " + numeroDePaginas);
+        System.out.println("Autor: " + (autor == null || autor.isEmpty() ? "N/A" : autor) );
+        System.out.println("Editora: " + (editora == null || editora.isEmpty() ? "N/A" : editora));
+        System.out.println("Número de páginas: " + (numeroDePaginas == 0 ? "N/A" : numeroDePaginas) );
     }
 
     protected abstract void exibeFichaEspecifica();

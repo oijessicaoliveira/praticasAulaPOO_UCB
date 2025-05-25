@@ -1,11 +1,13 @@
 package biblioteca.app;
 
+import biblioteca.db.DatabaseManager;
 import biblioteca.modelos.*;
 import biblioteca.interfaces.Digitalizavel;
 import java.util.*;
 
 public class Principal {
     public static void main(String[] args) throws Exception {
+        DatabaseManager.initializeDatabase();
         Livro livro = new Livro("Harry Potter e a Pedra Filosofal", "J. K. Rowling", "Rocco", 208,
                 "Fantasia", 1, "9780545069670", 17);
         livro.avalia(9);

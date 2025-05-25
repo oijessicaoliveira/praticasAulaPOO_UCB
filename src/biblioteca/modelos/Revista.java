@@ -5,7 +5,11 @@ public class Revista extends Publicacao implements Digitalizavel {
     private String edicao;
     private String assunto;
     private String issn;
-    private int numeroDeArtigos;
+    private int numeroDeArtigos; // Primitivo int será 0 por padrão
+
+    public Revista() {
+        // Construtor padrão
+    }
 
     public Revista(String titulo, String autor, String editora, int numeroDePaginas,
                    String assunto, String edicao, String issn, int numeroDeArtigos) {
@@ -17,10 +21,6 @@ public class Revista extends Publicacao implements Digitalizavel {
         setEdicao(edicao);
         setIssn(issn);
         setNumeroDeArtigos(numeroDeArtigos);
-    }
-
-    public Revista() {
-        // Construtor padrão
     }
 
     public String getEdicao() {
@@ -52,7 +52,7 @@ public class Revista extends Publicacao implements Digitalizavel {
     }
 
     public void setNumeroDeArtigos(int numeroDeArtigos) {
-        if (numeroDeArtigos < 0) {
+        if (numeroDeArtigos < 0) { // Permite 0 artigos
             throw new IllegalArgumentException("Número de artigos não pode ser negativo.");
         }
         this.numeroDeArtigos = numeroDeArtigos;
@@ -60,9 +60,10 @@ public class Revista extends Publicacao implements Digitalizavel {
 
     @Override
     protected void exibeFichaEspecifica() {
-        System.out.println("Assunto: " + assunto);
-        System.out.println("Edição: " + edicao);
-        System.out.println("ISSN: " + issn);
+        System.out.println("Assunto: " + (assunto == null || assunto.isEmpty() ? "N/A" : assunto));
+        System.out.println("Edição: " + (edicao == null || edicao.isEmpty() ? "N/A" : edicao));
+        System.out.println("ISSN: " + (issn == null || issn.isEmpty() ? "N/A" : issn));
+        // Para numeroDeArtigos, 0 é um valor válido e diferente de "não informado"
         System.out.println("Número de artigos: " + numeroDeArtigos);
     }
 

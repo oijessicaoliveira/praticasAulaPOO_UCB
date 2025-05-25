@@ -7,6 +7,11 @@ public class Livro extends Publicacao implements Digitalizavel {
     private String genero;
     private int numeroDeCapitulos;
 
+    public Livro() {
+        // Construtor padrão
+    }
+
+    // Construtor completo pode ser útil, mas não é estritamente necessário para Gson se houver setters
     public Livro(String titulo, String autor, String editora, int numeroDePaginas,
                  String genero, int volume, String isbn, int numeroDeCapitulos) {
         setTitulo(titulo);
@@ -19,16 +24,13 @@ public class Livro extends Publicacao implements Digitalizavel {
         setNumeroDeCapitulos(numeroDeCapitulos);
     }
 
-    public Livro() {
-    }
-
 
     public int getVolume() {
         return volume;
     }
 
     public void setVolume(int volume) {
-        if (volume <= 0) throw new IllegalArgumentException("Volume inválido.");
+        if (volume <= 0) throw new IllegalArgumentException("Volume do livro deve ser maior que zero.");
         this.volume = volume;
     }
 
@@ -37,7 +39,7 @@ public class Livro extends Publicacao implements Digitalizavel {
     }
 
     public void setIsbn(String isbn) {
-        this.isbn = isbn;
+        this.isbn = isbn; // ISBN pode ser opcional ou ter validações mais complexas
     }
 
     public String getGenero() {
@@ -53,16 +55,16 @@ public class Livro extends Publicacao implements Digitalizavel {
     }
 
     public void setNumeroDeCapitulos(int numeroDeCapitulos) {
-        if (numeroDeCapitulos <= 0) throw new IllegalArgumentException("Número de capítulos inválido.");
+        if (numeroDeCapitulos <= 0) throw new IllegalArgumentException("Número de capítulos do livro deve ser maior que zero.");
         this.numeroDeCapitulos = numeroDeCapitulos;
     }
 
     @Override
     protected void exibeFichaEspecifica() {
-        System.out.println("Gênero: " + genero);
-        System.out.println("Volume: " + volume);
-        System.out.println("ISBN: " + isbn);
-        System.out.println("Capítulos: " + numeroDeCapitulos);
+        System.out.println("Gênero: " + (genero == null || genero.isEmpty() ? "N/A" : genero));
+        System.out.println("Volume: " + (volume == 0 ? "N/A" : volume));
+        System.out.println("ISBN: " + (isbn == null || isbn.isEmpty() ? "N/A" : isbn));
+        System.out.println("Capítulos: " + (numeroDeCapitulos == 0 ? "N/A" : numeroDeCapitulos));
     }
 
     @Override
