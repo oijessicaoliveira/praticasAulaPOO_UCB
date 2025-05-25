@@ -7,6 +7,22 @@ public class Livro extends Publicacao implements Digitalizavel {
     private String genero;
     private int numeroDeCapitulos;
 
+    public Livro(String titulo, String autor, String editora, int numeroDePaginas,
+                 String genero, int volume, String isbn, int numeroDeCapitulos) {
+        setTitulo(titulo);
+        setAutor(autor);
+        setEditora(editora);
+        setNumeroDePaginas(numeroDePaginas);
+        setGenero(genero);
+        setVolume(volume);
+        setIsbn(isbn);
+        setNumeroDeCapitulos(numeroDeCapitulos);
+    }
+
+    public Livro() {
+    }
+
+
     public int getVolume() {
         return volume;
     }
@@ -43,7 +59,6 @@ public class Livro extends Publicacao implements Digitalizavel {
 
     @Override
     protected void exibeFichaEspecifica() {
-        System.out.println("Tipo: Livro");
         System.out.println("Gênero: " + genero);
         System.out.println("Volume: " + volume);
         System.out.println("ISBN: " + isbn);
@@ -57,6 +72,6 @@ public class Livro extends Publicacao implements Digitalizavel {
 
     @Override
     public void geraVersaoDigital() {
-        System.out.println("Versão digital do livro gerada com sucesso.");
+        System.out.println("Versão digital do livro '" + getTitulo() + "' gerada com sucesso.");
     }
 }

@@ -7,6 +7,22 @@ public class Revista extends Publicacao implements Digitalizavel {
     private String issn;
     private int numeroDeArtigos;
 
+    public Revista(String titulo, String autor, String editora, int numeroDePaginas,
+                   String assunto, String edicao, String issn, int numeroDeArtigos) {
+        setTitulo(titulo);
+        setAutor(autor);
+        setEditora(editora);
+        setNumeroDePaginas(numeroDePaginas);
+        setAssunto(assunto);
+        setEdicao(edicao);
+        setIssn(issn);
+        setNumeroDeArtigos(numeroDeArtigos);
+    }
+
+    public Revista() {
+        // Construtor padrão
+    }
+
     public String getEdicao() {
         return edicao;
     }
@@ -36,12 +52,14 @@ public class Revista extends Publicacao implements Digitalizavel {
     }
 
     public void setNumeroDeArtigos(int numeroDeArtigos) {
+        if (numeroDeArtigos < 0) {
+            throw new IllegalArgumentException("Número de artigos não pode ser negativo.");
+        }
         this.numeroDeArtigos = numeroDeArtigos;
     }
 
     @Override
     protected void exibeFichaEspecifica() {
-        System.out.println("Tipo: Revista");
         System.out.println("Assunto: " + assunto);
         System.out.println("Edição: " + edicao);
         System.out.println("ISSN: " + issn);
@@ -55,6 +73,6 @@ public class Revista extends Publicacao implements Digitalizavel {
 
     @Override
     public void geraVersaoDigital() {
-        System.out.println("Versão digital da revista gerada com sucesso.");
+        System.out.println("Versão digital da revista '" + getTitulo() + "' gerada com sucesso.");
     }
 }

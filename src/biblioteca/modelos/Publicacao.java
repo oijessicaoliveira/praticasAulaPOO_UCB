@@ -57,9 +57,9 @@ public abstract class Publicacao {
         }
     }
 
-    public void avaliaComValidacao(double nota) throws Exception {
+    public void avaliaComValidacao(double nota) throws IllegalArgumentException {
         if (nota < 0 || nota > 10) {
-            throw new Exception("Nota inválida. Informe valor entre 0 e 10.");
+            throw new IllegalArgumentException("Nota inválida. Informe valor entre 0 e 10.");
         }
         avalia(nota);
     }
@@ -70,6 +70,7 @@ public abstract class Publicacao {
 
     public void exibeFichaCompleta() {
         exibeFichaBasica();
+        System.out.println("Tipo: " + getTipo()); // Adicionado
         exibeFichaEspecifica();
     }
 

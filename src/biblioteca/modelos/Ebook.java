@@ -3,6 +3,19 @@ package biblioteca.modelos;
 public class Ebook extends PublicacaoDigital {
     private String formato;
 
+    public Ebook(String titulo, String autor, String editora, int numeroDePaginas,
+                 int tamanhoEmMB, String formato) {
+        setTitulo(titulo);
+        setAutor(autor);
+        setEditora(editora);
+        setNumeroDePaginas(numeroDePaginas);
+        setTamanhoEmMB(tamanhoEmMB);
+        setFormato(formato);
+    }
+
+    public Ebook() {
+    }
+
     public String getFormato() {
         return formato;
     }

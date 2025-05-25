@@ -14,7 +14,7 @@ public abstract class PublicacaoDigital extends Publicacao {
 
     @Override
     protected void exibeFichaEspecifica() {
-        System.out.println("Tipo: Publicação Digital");
+        // A linha "Tipo: Publicação Digital" foi removida daqui
         System.out.println("Tamanho do arquivo: " + tamanhoEmMB + " MB");
     }
 
